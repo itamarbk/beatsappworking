@@ -29,7 +29,7 @@ public class Sound {
             sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
                 @Override
                 public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                    sp.play(spid, 10, 10, 1, 0, 1);
+                    sp.play(spid, 1, 1, 1, 0, 1);
                     //soundpool.play(id,leftV,rightV,priority,loop,rate)
                 }
             });

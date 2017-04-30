@@ -2,32 +2,58 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
-        <dex dex="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\pre-dexed\debug\classes-579d1c4e29094d167d4cfe3af38566e13cbc6b54.jar" />
-    </item>
-    <item
-        jar="D:\Users\user1\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-7263c3a7bf9a7ee064a60a2c422d1f861b576db9.jar" />
-    </item>
-    <item
-        jar="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0"
+        is-multidex="true"
+        jar="C:\Users\tbaic\.android\build-cache\9f315da721728a2c19cb8bfcccbb4a05c1b64cd6\output\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
-        <dex dex="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-2545e787311de04f163cfafc1e362bbbcdedc6a7.jar" />
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.0.0_9bfaaeb10a7bf492ad0c6aca4963cabe80c21f60\classes.dex" />
     </item>
     <item
-        jar="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
+        is-multidex="true"
+        jar="C:\Users\tbaic\.android\build-cache\f01f68dec5f07d3232f142a2cff7fa5f8c3023cc\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
-        <dex dex="C:\Users\user1\Documents\GitHub\beatsmaker\app\build\intermediates\pre-dexed\debug\classes-d836f86763853d4a38adc3d2ebadf5ed21c1c655.jar" />
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_86a8e4f2bf42bffb42448b1616c37595482992c0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="85bd38686d096c646071fa8a7900d0a8d8a887e2">
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8e17cea057ff99b354a9f496e7046187088d1986\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tbaic\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.0.0_9463b196ccb511095dc89a072665b774c7a45d77\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tbaic\.android\build-cache\9f315da721728a2c19cb8bfcccbb4a05c1b64cd6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e864b2c2af145cece56d459a7b4e8d737e694f26\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\tbaic\Documents\GitHub\beatsappworking\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_7c78cd0108f642ffc11af264d0db2b6ff03e6dc1\classes.dex" />
     </item>
 
 </items>

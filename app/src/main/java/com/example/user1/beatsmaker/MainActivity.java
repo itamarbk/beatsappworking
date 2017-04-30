@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
             }
+            new LongOperation().execute("");
             setContentView(R.layout.activity_main);
             {
                 //gpp3 is an easy media file type
@@ -75,11 +79,40 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     sounds[0].play(MainActivity.this);
-                    assist.waitFor(2000);
                     sounds[1].play(MainActivity.this);
                 }
             });
         }
+    private class LongOperation extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    Thread.interrupted();
+                }
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            Toast.makeText(MainActivity.this,"ready to go", Toast.LENGTH_SHORT).show();
+            // might want to change "executed" for the returned string passed
+            // into onPostExecute() but that is upto you
+        }
+
+        @Override
+        protected void onPreExecute() {
+            Toast.makeText(MainActivity.this, "loading...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
