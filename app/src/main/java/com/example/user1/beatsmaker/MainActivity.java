@@ -4,6 +4,12 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
             }
-            new LongOperation().execute("");
+            new wait().execute("");
             setContentView(R.layout.activity_main);
             {
                 //gpp3 is an easy media file type
@@ -78,17 +84,29 @@ public class MainActivity extends AppCompatActivity {
             btnBeat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sounds[0].play(MainActivity.this);
-                    sounds[1].play(MainActivity.this);
+                    dbHandler handle=new dbHandler(MainActivity.this,null);
+                    handle.deleteSound(sounds[0]);
+                    handle.addSound(sounds[0],4);
+                    BeatBit[] MyBits=handle.getArrayForBeat();
+                    for(int j=0;j<16;j++){
+                        for (int i=0;i<MyBits.length;i++){
+                            if(MyBits[i]!=null) {
+                                if (16 % MyBits[i].getFrequency() == 0) {
+                                    MyBits[i].play();
+                                }
+                            }
+                        }
+                        new wait().execute("");
+                    }
                 }
             });
         }
-    private class LongOperation extends AsyncTask<String, Void, String> {
+    private class wait extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(62);
                 } catch (InterruptedException e) {
                     Thread.interrupted();
                 }
