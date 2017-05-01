@@ -12,15 +12,13 @@ import java.io.File;
 /**
  * Created by USER1 on 30/04/2017.
  */
-public class Sound {
+public class Sound implements SPPlayable{
 
     private static SoundPool sp = new SoundPool(99, AudioManager.STREAM_MUSIC, 0);
     private final static File EMPTYFILE=new File("empty.gpp3");
     private Button btn;
     private File fileout;
     private int spid;
-
-
 
     public void play(Context con) {
         Log.d("file is", fileout.getPath());

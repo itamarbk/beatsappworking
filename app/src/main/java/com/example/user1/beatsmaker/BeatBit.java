@@ -1,5 +1,6 @@
 package com.example.user1.beatsmaker;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
@@ -7,7 +8,7 @@ import android.media.SoundPool;
  * Created by tbaic on 5/1/2017.
  */
 
-public class BeatBit {
+public class BeatBit implements SPPlayable{
     private static SoundPool sp = new SoundPool(99, AudioManager.STREAM_MUSIC, 0);
     private String filePath;
     private Integer frequency;
@@ -26,7 +27,7 @@ public class BeatBit {
         return frequency;
     }
 
-    public void play(){
+    public void play(Context con){
         spid = sp.load(filePath, 1);
         sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override

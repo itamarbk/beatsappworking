@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i=0;i<MyBits.length;i++){
                             if(MyBits[i]!=null) {
                                 if (16 % MyBits[i].getFrequency() == 0) {
-                                    MyBits[i].play();
+                                    MyBits[i].play(MainActivity.this);
                                 }
                             }
                         }
