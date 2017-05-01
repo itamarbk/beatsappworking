@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import java.io.File;
@@ -25,7 +26,7 @@ public class RecordActivity extends AppCompatActivity {
         Button btn_done = (Button) findViewById(R.id.btn_done);
         Button btn_add=(Button) findViewById(R.id.add_btn);
         Button btn_dlt=(Button) findViewById(R.id.dlt_btn);
-        final NumberPicker freq=(NumberPicker) findViewById(R.id.numberPicker);
+        final EditText freq=(EditText) findViewById(R.id.freq);
         btn.setText("record");
         Intent stillMyIntent = getIntent();
         final File fileout = (File) stillMyIntent.getExtras().get("file");
@@ -71,11 +72,29 @@ public class RecordActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    if (freq.getText().toString() != null || freq.getText().toString() != "") {
+                        dbHandler handle = new dbHandler(RecordActivity.this, null);
+                        if (handle.existsInDB(fileout))
+                            handle.updateSound(fileout, Integer.parseInt(freq.getText().toString()));
+                        else
+                            handle.addSound(fileout, Integer.parseInt(freq.getText().toString()));
+                    }
+                }
+                catch(Exception e){}
+                }
+        });
+
+        btn_dlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dbHandler handle=new dbHandler(RecordActivity.this, null);
-                handle.addSound(fileout,freq.getValue());
+                if(handle.existsInDB(fileout))
+                    handle.deleteSound(fileout);
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dbHandler handle=new dbHandler(MainActivity.this,null);
-                    handle.deleteSound(sounds[0]);
-                    handle.addSound(sounds[0],4);
                     BeatBit[] MyBits=handle.getArrayForBeat();
                     for(int j=0;j<16;j++) {
                         for (int i = 0; i < MyBits.length; i++) {

@@ -88,16 +88,22 @@ public class dbHandler extends SQLiteOpenHelper {
                 } while (crsr.moveToNext());
             }
         }
+        crsr.close();
         return MyBits;
     }
 
     public boolean existsInDB(File file){
-        boolean exists=false;
         SQLiteDatabase db = this.getReadableDatabase();
         String SELECT = "";
         SELECT += "SELECT " + COLUMN_SOUND_FILE_PATH + ","
                 + COLUMN_PLAY_EVERY + " FROM "
-                + TABLE_NAME+ "WHERE"+COLUMN_SOUND_FILE_PATH+"+ ?";
+                + TABLE_NAME+ " WHERE "+COLUMN_SOUND_FILE_PATH+" = ?";
         Cursor crsr = db.rawQuery(SELECT, new String[]{String.valueOf(file.getPath())});
+        if(crsr.moveToFirst()){
+            crsr.close();
+            return crsr.getString(crsr.getColumnIndex(COLUMN_SOUND_FILE_PATH))!=null;
+        }
+        crsr.close();
+        return false;
     }
 }

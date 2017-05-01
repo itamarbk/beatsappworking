@@ -35,33 +35,31 @@
         android:layout_toLeftOf="@+id/btn_done"
         android:layout_toStartOf="@+id/btn_done" />
 
-    <NumberPicker
-        android:id="@+id/numberPicker"
+    <EditText
+        android:id="@+id/freq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignRight="@+id/btn_record"
-        android:layout_alignEnd="@+id/btn_record"
-        android:layout_marginRight="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_alignTop="@+id/textView" />
+        android:layout_above="@+id/dlt_btn"
+        android:layout_toLeftOf="@+id/btn_record"
+        android:layout_toStartOf="@+id/btn_record" />
 
     <Button
         android:id="@+id/add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numberPicker"
-        android:layout_marginTop="64dp"
-        android:layout_toEndOf="@+id/btn_done"
-        android:layout_toRightOf="@+id/btn_done"
-        android:text="add to beat" />
+        android:text="add to beat"
+        android:layout_alignBaseline="@+id/dlt_btn"
+        android:layout_alignBottom="@+id/dlt_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/dlt_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/add_btn"
-        android:layout_toLeftOf="@+id/btn_record"
-        android:layout_toStartOf="@+id/btn_record"
-        android:text="delete from beat" />
+        android:text="delete from beat"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="79dp" />
 </RelativeLayout>
