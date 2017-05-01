@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
             }
-            new wait().execute("");
             setContentView(R.layout.activity_main);
             {
                 //gpp3 is an easy media file type
@@ -88,25 +88,27 @@ public class MainActivity extends AppCompatActivity {
                     handle.deleteSound(sounds[0]);
                     handle.addSound(sounds[0],4);
                     BeatBit[] MyBits=handle.getArrayForBeat();
-                    for(int j=0;j<16;j++){
-                        for (int i=0;i<MyBits.length;i++){
-                            if(MyBits[i]!=null) {
+                    for(int j=0;j<16;j++) {
+                        for (int i = 0; i < MyBits.length; i++) {
+                            if (MyBits[i] != null) {
                                 if (16 % MyBits[i].getFrequency() == 0) {
                                     MyBits[i].play(MainActivity.this);
+                                    Log.d("playing 1/",j+"note");
                                 }
                             }
                         }
-                        new wait().execute("");
+                        new playBeat().execute("");
                     }
+
                 }
             });
         }
-    private class wait extends AsyncTask<String, Void, String> {
+    private class playBeat extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
-                try {
-                    Thread.sleep(62);
+                try {Thread.sleep(60);
+                    Log.d("waiting","");
                 } catch (InterruptedException e) {
                     Thread.interrupted();
                 }

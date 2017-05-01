@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+
 /**
  * Created by tbaic on 4/30/2017.
  */
@@ -39,10 +41,10 @@ public class dbHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public void addSound(Sound snd, Integer frequency){
-        if(snd.getFileout()!=null) {
+    public void addSound(File file, Integer frequency){
+        if(file!=null) {
             ContentValues values = new ContentValues();
-            values.put(COLUMN_SOUND_FILE_PATH, snd.getFileout().getPath());
+            values.put(COLUMN_SOUND_FILE_PATH, file.getPath());
             values.put(COLUMN_PLAY_EVERY, frequency);
             SQLiteDatabase db = this.getWritableDatabase();
             db.insert(TABLE_NAME, null, values);
@@ -50,18 +52,19 @@ public class dbHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void deleteSound(Sound snd) {
+    public void deleteSound(File file) {
         SQLiteDatabase db=this.getWritableDatabase();
-        db.delete(TABLE_NAME,COLUMN_SOUND_FILE_PATH+"= ?",new String[]{String.valueOf(snd.getFileout().getPath())});
+        db.delete(TABLE_NAME,COLUMN_SOUND_FILE_PATH+"= ?",new String[]{String.valueOf(file.getPath())});
         db.close();
     }
-    public void updateSound(Sound snd, Integer frequency){
-        if(snd.getFileout()!=null) {
+
+    public void updateSound(File file, Integer frequency){
+        if(file!=null) {
             ContentValues values = new ContentValues();
-            values.put(COLUMN_SOUND_FILE_PATH, snd.getFileout().getPath());
+            values.put(COLUMN_SOUND_FILE_PATH, file.getPath());
             values.put(COLUMN_PLAY_EVERY, frequency);
             SQLiteDatabase db = this.getWritableDatabase();
-            db.update(TABLE_NAME, values, COLUMN_SOUND_FILE_PATH + "= ?", new String[]{String.valueOf(snd.getFileout().getPath())});
+            db.update(TABLE_NAME, values, COLUMN_SOUND_FILE_PATH + "= ?", new String[]{String.valueOf(file.getPath())});
             db.close();
         }
     }
@@ -86,5 +89,15 @@ public class dbHandler extends SQLiteOpenHelper {
             }
         }
         return MyBits;
+    }
+
+    public boolean existsInDB(File file){
+        boolean exists=false;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String SELECT = "";
+        SELECT += "SELECT " + COLUMN_SOUND_FILE_PATH + ","
+                + COLUMN_PLAY_EVERY + " FROM "
+                + TABLE_NAME+ "WHERE"+COLUMN_SOUND_FILE_PATH+"+ ?";
+        Cursor crsr = db.rawQuery(SELECT, new String[]{String.valueOf(file.getPath())});
     }
 }

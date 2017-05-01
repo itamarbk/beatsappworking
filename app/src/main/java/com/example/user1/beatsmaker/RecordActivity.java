@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 
 import java.io.File;
 
@@ -22,6 +23,9 @@ public class RecordActivity extends AppCompatActivity {
         final String LOOP_EXPLAIN = "poop on that loop";
         final Button btn = (Button) findViewById(R.id.btn_record);
         Button btn_done = (Button) findViewById(R.id.btn_done);
+        Button btn_add=(Button) findViewById(R.id.add_btn);
+        Button btn_dlt=(Button) findViewById(R.id.dlt_btn);
+        final NumberPicker freq=(NumberPicker) findViewById(R.id.numberPicker);
         btn.setText("record");
         Intent stillMyIntent = getIntent();
         final File fileout = (File) stillMyIntent.getExtras().get("file");
@@ -61,6 +65,14 @@ public class RecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RecordActivity.this, MainActivity.class));
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbHandler handle=new dbHandler(RecordActivity.this, null);
+                handle.addSound(fileout,freq.getValue());
             }
         });
     }

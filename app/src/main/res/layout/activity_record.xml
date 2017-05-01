@@ -23,4 +23,45 @@
         android:layout_below="@+id/btn_record"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="play every 1/"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/btn_done"
+        android:layout_toLeftOf="@+id/btn_done"
+        android:layout_toStartOf="@+id/btn_done" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignRight="@+id/btn_record"
+        android:layout_alignEnd="@+id/btn_record"
+        android:layout_marginRight="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_alignTop="@+id/textView" />
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberPicker"
+        android:layout_marginTop="64dp"
+        android:layout_toEndOf="@+id/btn_done"
+        android:layout_toRightOf="@+id/btn_done"
+        android:text="add to beat" />
+
+    <Button
+        android:id="@+id/dlt_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/add_btn"
+        android:layout_toLeftOf="@+id/btn_record"
+        android:layout_toStartOf="@+id/btn_record"
+        android:text="delete from beat" />
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.user1.beatsmaker;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.util.Log;
 
 /**
  * Created by tbaic on 5/1/2017.
@@ -34,6 +35,7 @@ public class BeatBit implements SPPlayable{
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
                 sp.play(spid, 1, 1, 1, 0, 1);
                 //soundpool.play(id,leftV,rightV,priority,loop,rate)
+                Log.d("filepath being played",filePath);
             }
         });}
 }
