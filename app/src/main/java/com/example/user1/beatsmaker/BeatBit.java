@@ -9,7 +9,7 @@ import android.util.Log;
  * Created by tbaic on 5/1/2017.
  */
 
-public class BeatBit implements SPPlayable{
+public class BeatBit implements SPPlayable{//represents a file and a time period in which it will be played
     private static SoundPool sp = new SoundPool(99, AudioManager.STREAM_MUSIC, 0);
     private String filePath;
     private Integer frequency;
@@ -28,7 +28,7 @@ public class BeatBit implements SPPlayable{
         return frequency;
     }
 
-    public void play(Context con){
+    public void play(Context con){//plays the file
         spid = sp.load(filePath, 1);
         sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
@@ -37,5 +37,7 @@ public class BeatBit implements SPPlayable{
                 //soundpool.play(id,leftV,rightV,priority,loop,rate)
                 Log.d("filepath being played",filePath);
             }
-        });}
+        });
+        sp.release();
+    }
 }

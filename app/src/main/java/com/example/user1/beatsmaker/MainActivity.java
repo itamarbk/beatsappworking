@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
             for(final Sound sound : sounds) {
                 sound.getBtn().setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) {//plays sound on click
                         sound.play(MainActivity.this);
                     }
                 });
                 sound.getBtn().setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public boolean onLongClick(View v) {
+                    public boolean onLongClick(View v) {//sends to record activty on longclick
                         Intent myIntent=new Intent(MainActivity.this,RecordActivity.class);
                         myIntent.putExtra("file",sound.getFileout());
                         startActivity(myIntent);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
             btnBeat.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {//creates beat and plays it
                     dbHandler handle=new dbHandler(MainActivity.this,null);
                     BeatBit[] MyBits=handle.getArrayForBeat();
                     for(int j=0;j<16;j++) {
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-    private class playBeat extends AsyncTask<String, Void, String> {
+    private class playBeat extends AsyncTask<String, Void, String> {//waits 60 milliseconds
 
         @Override
         protected String doInBackground(String... params) {

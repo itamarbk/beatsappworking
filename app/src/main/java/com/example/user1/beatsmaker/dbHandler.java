@@ -26,7 +26,7 @@ public class dbHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {//creats table accordding to column constant names
         String CREATE_TABLE="";
         CREATE_TABLE+="CREATE TABLE "+TABLE_NAME+" (";
         CREATE_TABLE+=COLUMN_Id+" INTEGER PRIMARY KEY,";
@@ -41,7 +41,7 @@ public class dbHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public void addSound(File file, Integer frequency){
+    public void addSound(File file, Integer frequency){//adds sound to table
         if(file!=null) {
             ContentValues values = new ContentValues();
             values.put(COLUMN_SOUND_FILE_PATH, file.getPath());
@@ -52,13 +52,13 @@ public class dbHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void deleteSound(File file) {
+    public void deleteSound(File file) {//delets sound from table
         SQLiteDatabase db=this.getWritableDatabase();
         db.delete(TABLE_NAME,COLUMN_SOUND_FILE_PATH+"= ?",new String[]{String.valueOf(file.getPath())});
         db.close();
     }
 
-    public void updateSound(File file, Integer frequency){
+    public void updateSound(File file, Integer frequency){// updates file and frequency in table
         if(file!=null) {
             ContentValues values = new ContentValues();
             values.put(COLUMN_SOUND_FILE_PATH, file.getPath());
@@ -69,7 +69,7 @@ public class dbHandler extends SQLiteOpenHelper {
         }
     }
 
-    public BeatBit[] getArrayForBeat() {
+    public BeatBit[] getArrayForBeat() {//returns data from table in array of BeatBit
         SQLiteDatabase db = this.getReadableDatabase();
         String SELECT = "";
         SELECT += "SELECT " + COLUMN_SOUND_FILE_PATH + ","
@@ -92,7 +92,7 @@ public class dbHandler extends SQLiteOpenHelper {
         return MyBits;
     }
 
-    public boolean existsInDB(File file){
+    public boolean existsInDB(File file){//returns true if file existis in table
         SQLiteDatabase db = this.getReadableDatabase();
         String SELECT = "";
         SELECT += "SELECT " + COLUMN_SOUND_FILE_PATH + ","

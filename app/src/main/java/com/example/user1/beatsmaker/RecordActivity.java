@@ -34,7 +34,7 @@ public class RecordActivity extends AppCompatActivity {
         /*                                       record                                         */
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//records sound
                 if (btn.getText() == "record") {//if not already recording
                     if (fileout != null)
                         fileout.delete();//deletes any file that exists at the location
@@ -64,12 +64,19 @@ public class RecordActivity extends AppCompatActivity {
     /*                                       go back                              */
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//send back to mainactivity
+                try {
+                    record.stop();
+                    record.release();
+                }
+                catch(Exception e) {
+
+                }
                 startActivity(new Intent(RecordActivity.this, MainActivity.class));
             }
         });
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
+        btn_add.setOnClickListener(new View.OnClickListener() {//adds file to database
             @Override
             public void onClick(View view) {
                 try {
@@ -87,7 +94,7 @@ public class RecordActivity extends AppCompatActivity {
 
         btn_dlt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//delets file from database
                 dbHandler handle=new dbHandler(RecordActivity.this, null);
                 if(handle.existsInDB(fileout))
                     handle.deleteSound(fileout);

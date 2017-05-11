@@ -20,8 +20,9 @@ public class Sound implements SPPlayable{
     private File fileout;
     private int spid;
 
-    public void play(Context con) {
+    public void play(Context con) {//plays sound
         Log.d("file is", fileout.getPath());
+
         if (fileout.canRead()) {
             spid = sp.load(fileout.getPath(), 1);
             sp.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
@@ -35,6 +36,8 @@ public class Sound implements SPPlayable{
         }
         else
             Toast.makeText(con, "you have not yet recorded this sound", Toast.LENGTH_SHORT).show();
+
+
     }
 
     public Sound(File fileout, Button btn) {
